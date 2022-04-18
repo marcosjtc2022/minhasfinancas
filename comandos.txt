@@ -1,0 +1,197 @@
+Microsoft Windows [versão 10.0.22000.556]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\Marcos>node -v
+v16.14.2
+
+C:\Users\Marcos>npm -v
+8.5.0
+
+C:\Users\Marcos>npm install -g yarn
+
+added 1 package, and audited 2 packages in 4s
+
+found 0 vulnerabilities
+npm notice
+npm notice New patch version of npm available! 8.5.0 -> 8.5.5
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v8.5.5
+npm notice Run npm install -g npm@8.5.5 to update!
+npm notice
+
+C:\Users\Marcos>npm install -g create-react-app
+npm WARN deprecated tar@2.2.2: This version of tar is no longer supported, and will not receive security updates. Please upgrade asap.
+
+added 67 packages, and audited 68 packages in 10s
+
+4 packages are looking for funding
+  run `npm fund` for details
+
+6 high severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+
+C:\Users\Marcos>create-react-app
+Please specify the project directory:
+  create-react-app <project-directory>
+
+For example:
+  create-react-app my-react-app
+
+Run create-react-app --help to see all options.
+
+C:\Users\Marcos>cd sistemas
+O sistema não pode encontrar o caminho especificado.
+
+C:\Users\Marcos>cd..
+
+C:\Users>cd sistemas
+O sistema não pode encontrar o caminho especificado.
+
+C:\Users>cd..
+
+C:\>cd sistemas
+
+C:\sistemas>create-react-app minhas-financas-app
+
+Creating a new React app in C:\sistemas\minhas-financas-app.
+
+Installing packages. This might take a couple of minutes.
+Installing react, react-dom, and react-scripts with cra-template...
+
+
+added 1373 packages in 6m
+
+169 packages are looking for funding
+  run `npm fund` for details
+
+Initialized a git repository.
+
+Installing template dependencies using npm...
+npm WARN deprecated source-map-resolve@0.6.0: See https://github.com/lydell/source-map-resolve#deprecated
+
+added 38 packages in 14s
+
+169 packages are looking for funding
+  run `npm fund` for details
+Removing template package using npm...
+
+
+removed 1 package, and audited 1411 packages in 14s
+
+169 packages are looking for funding
+  run `npm fund` for details
+
+19 vulnerabilities (2 moderate, 17 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+Git commit not created Error: Command failed: git commit -m "Initialize project using Create React App"
+    at checkExecSyncError (node:child_process:828:11)
+    at execSync (node:child_process:902:15)
+    at tryGitCommit (C:\sistemas\minhas-financas-app\node_modules\react-scripts\scripts\init.js:62:5)
+    at module.exports (C:\sistemas\minhas-financas-app\node_modules\react-scripts\scripts\init.js:350:25)
+    at [eval]:3:14
+    at Script.runInThisContext (node:vm:129:12)
+    at Object.runInThisContext (node:vm:305:38)
+    at node:internal/process/execution:76:19
+    at [eval]-wrapper:6:22
+    at evalScript (node:internal/process/execution:75:60) {
+  status: 128,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 6032,
+  stdout: null,
+  stderr: null
+}
+Removing .git directory...
+
+Success! Created minhas-financas-app at C:\sistemas\minhas-financas-app
+Inside that directory, you can run several commands:
+
+  npm start
+    Starts the development server.
+
+  npm run build
+    Bundles the app into static files for production.
+
+  npm test
+    Starts the test runner.
+
+  npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+
+  cd minhas-financas-app
+  npm start
+
+Happy hacking!
+
+C:\sistemas>dir
+ O volume na unidade C não tem nome.
+ O Número de Série do Volume é 6EFB-5173
+
+ Pasta de C:\sistemas
+
+21/03/2022  20:22    <DIR>          .
+17/03/2022  22:14           215.734 JPA - Arquitetura.docx
+21/03/2022  20:29    <DIR>          minhas-financas-app
+21/03/2022  10:30    <DIR>          minhasfinancas
+17/03/2022  19:56    <DIR>          minhasfinancasnovo
+11/03/2022  22:10                 3 password postgres.txt
+17/03/2022  19:55               798 script banco.txt
+21/03/2022  11:03           345.751 Spring - Arquitetura.docx
+               4 arquivo(s)        562.286 bytes
+               4 pasta(s)   44.123.258.880 bytes disponíveis
+
+C:\sistemas>cd minhas-financas-app
+
+C:\sistemas\minhas-financas-app>yarn start
+yarn run v1.22.18
+$ react-scripts start
+(node:17188) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:17188) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+Compiled successfully!
+
+You can now view minhas-financas-app in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.0.42:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+assets by path static/ 1.49 MiB
+  asset static/js/bundle.js 1.48 MiB [emitted] (name: main) 1 related asset
+  asset static/js/node_modules_web-vitals_dist_web-vitals_js.chunk.js 6.94 KiB [emitted] 1 related asset
+  asset static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg 2.57 KiB [emitted] (auxiliary name: main)
+asset index.html 1.67 KiB [emitted]
+asset asset-manifest.json 546 bytes [emitted]
+runtime modules 31.4 KiB 15 modules
+modules by path ./node_modules/ 1.35 MiB 99 modules
+modules by path ./src/ 18.1 KiB
+  modules by path ./src/*.css 8.82 KiB
+    ./src/index.css 2.72 KiB [built] [code generated]
+    ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/index.css 1.37 KiB [built] [code generated]
+    ./src/App.css 2.72 KiB [built] [code generated]
+    ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/App.css 2 KiB [built] [code generated]
+  modules by path ./src/*.js 5.66 KiB
+    ./src/index.js 1.78 KiB [built] [code generated]
+    ./src/App.js 2.49 KiB [built] [code generated]
+    ./src/reportWebVitals.js 1.38 KiB [built] [code generated]
+  ./src/logo.svg 3.61 KiB [built] [code generated]
+webpack 5.70.0 compiled successfully in 27432 ms
