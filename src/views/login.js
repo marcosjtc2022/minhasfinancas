@@ -22,11 +22,11 @@ class Login extends React.Component{
                senha: this.state.senha 
        }).then (response => {
             //console.log(response)
-
             this.props.history.push("/home");
+           // this.props.history.push("/home");
        }).catch( erro =>{
-            //this.setState({mensagemErro: erro.response.data.message});
-            console.log("teste")
+            this.setState({mensagemErro: erro.response.data.message});
+            //console.log("teste")
        })
 
 
