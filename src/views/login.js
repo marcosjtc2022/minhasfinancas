@@ -16,12 +16,21 @@ class Login extends React.Component{
     entrar = () =>{
        console.log('Email: ', this.state.email)
        console.log('Senha' , this.state.senha)
-
+       //Axios é baseado em promisses, que é a forma que o javascript
+       //encontrou para realzar operações assíncronas.
+       //Antes de enviar a resposta para o servidor já executa a próxima requisição.
+       //async + await = A requisição é assíncrona, mas com 'await' só passa para a,
+       //próxima linha quando tiver o retorno da requisição.
+       //Localstorage - Apenas o front end tem acesso. Os cookies, por sua vez, podem ser recuperados,
+       //dentro da aplicação java. Neste caso, o localstorage será utilizado para armazenar no browser.
+       //Recupera o usuário logado para ser utilizado em outras telas.
        axios.post('http://localhost:8080/api/usuarios/autenticar', {
                email: this.state.email,
                senha: this.state.senha 
        }).then (response => {
             //console.log(response)
+            //JSON.stringify() transforma o objeto JSON em uma string.
+            localStorage.setItem('_usuario_logado', JSON.stringify(response.data));
             this.props.history.push("/home");
            // this.props.history.push("/home");
        }).catch( erro =>{

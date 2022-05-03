@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 class Home extends React.Component{
 
@@ -8,6 +9,31 @@ class Home extends React.Component{
 
     }
 
+    //Cria como função comum. 
+    //Carrega quando a classe é inciada. 
+    componentDidMount() {
+        //Recupera usuário logado da classe login.js.
+        const usuarioLogadoString = localStorage.getItem('_usuario_logado');
+
+        //JSON.stringify() transforma uma string em um objeto JSON.
+        const usuarioLogado = JSON.parse(usuarioLogadoString);
+        console.log('Usuário logado do localstorage' , usuarioLogado);
+        
+        //Tira a aspa simples e coloca a crase para colocar o parâmetro dinâmico.
+        //Desta forma, transforma-se em template string.
+        //Pode quebrar a linha e colocar uma string dentro sem precisar concatenar.
+        //Pode interpolar variáveis que estão no contexto.
+        axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}/saldo`)
+        .then( response => {
+             this.setState({saldo: response.data})   
+        }).catch( error => {
+            console.error(error.response)
+        })
+    }
+    // O ciclo de vida do react sãp callbacks que são executados em fases específicas.
+    //Depois que o componente executar(montado ou desmontado) na tela,
+    // irá executar as instruções em um callback(function).
+    //componentDidMount,componentWillUnmount
     render(){
 
         return (
