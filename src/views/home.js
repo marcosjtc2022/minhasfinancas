@@ -1,5 +1,7 @@
 import React from "react";
-import axios from "axios";
+import UsuarioService from "../app/service/usuarioService";
+import LocalStorageService from "../app/service/localstorageService";
+//import axios from "axios";
 
 class Home extends React.Component{
 
@@ -9,11 +11,17 @@ class Home extends React.Component{
 
     }
 
+    constructor(){
+        super();
+        this.UsuarioService = new UsuarioService();
+    }
+
     //Cria como função comum. 
     //Carrega quando a classe é inciada. 
     componentDidMount() {
         //Recupera usuário logado da classe login.js.
-        const usuarioLogadoString = localStorage.getItem('_usuario_logado');
+       // const usuarioLogadoString = localStorage.getItem('_usuario_logado');
+        const usuarioLogadoString = LocalStorageService.obterItem('_usuario_logado');
 
         //JSON.stringify() transforma uma string em um objeto JSON.
         const usuarioLogado = JSON.parse(usuarioLogadoString);
@@ -23,17 +31,20 @@ class Home extends React.Component{
         //Desta forma, transforma-se em template string.
         //Pode quebrar a linha e colocar uma string dentro sem precisar concatenar.
         //Pode interpolar variáveis que estão no contexto.
-        axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}/saldo`)
-        .then( response => {
-             this.setState({saldo: response.data})   
-        }).catch( error => {
-            console.error(error.response)
-        })
+        //axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}/saldo`)
+        this.UsuarioService
+            .obterSaldoPorusuario(usuarioLogado.id)
+            .then( response => {
+                this.setState({saldo: response.data})   
+            }).catch( error => {
+                console.error(error.response)
+            })
     }
     // O ciclo de vida do react sãp callbacks que são executados em fases específicas.
     //Depois que o componente executar(montado ou desmontado) na tela,
     // irá executar as instruções em um callback(function).
     //componentDidMount,componentWillUnmount
+    //Sessão irá durar enquanto não limpar o localstorage.
     render(){
 
         return (
