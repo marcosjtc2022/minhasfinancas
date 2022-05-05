@@ -1,7 +1,7 @@
 import React from "react";
 import UsuarioService from "../app/service/usuarioService";
 import LocalStorageService from "../app/service/localstorageService";
-import axios from "axios";
+//import axios from "axios";
 
 class Home extends React.Component{
 
@@ -20,11 +20,11 @@ class Home extends React.Component{
     //Carrega quando a classe é inciada. 
     componentDidMount() {
         //Recupera usuário logado da classe login.js.
-        const usuarioLogadoString = localStorage.getItem('_usuario_logado');
-        //const usuarioLogadoString = LocalStorageService.obterItem('_usuario_logado');
+       // const usuarioLogadoString = localStorage.getItem('_usuario_logado');
+        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
 
         //JSON.stringify() transforma uma string em um objeto JSON.
-        const usuarioLogado = JSON.parse(usuarioLogadoString);
+        //const usuarioLogado = JSON.parse(usuarioLogadoString);
         //console.log('Usuário logado do localstorage' , usuarioLogado);
         
         //Tira a aspa simples e coloca a crase para colocar o parâmetro dinâmico.

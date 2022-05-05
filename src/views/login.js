@@ -45,8 +45,8 @@ class Login extends React.Component{
        }).then (response => {
             //console.log(response)
             //JSON.stringify() transforma o objeto JSON em uma string.
-           // LocalStorageService.adicionarItem('_usuario_logado', response.data)
-            localStorage.setItem('_usuario_logado', JSON.stringify(response.data));
+            LocalStorageService.adicionarItem('_usuario_logado', response.data)
+           //* localStorage.setItem('_usuario_logado', JSON.stringify(response.data));
             this.props.history.push("/home");
            // this.props.history.push("/home");
        }).catch( erro =>{
