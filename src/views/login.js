@@ -4,7 +4,8 @@ import FormGroup from "../components/form-group";
 import { withRouter } from 'react-router-dom'
 //import axios from "axios";
 import UsuarioService from "../app/service/usuarioService";
-import LocalStorageService from "../app/service/localstorageService"; 
+import LocalStorageService from "../app/service/localstorageService";
+import { mensagemErro} from '../components/toastr';
 
 
 class Login extends React.Component{
@@ -44,13 +45,14 @@ class Login extends React.Component{
        }).then (response => {
             //console.log(response)
             //JSON.stringify() transforma o objeto JSON em uma string.
-            LocalStorageService.adicionarItem('_usuario_logado', response.data)
-           // localStorage.setItem('_usuario_logado', JSON.stringify(response.data));
+           // LocalStorageService.adicionarItem('_usuario_logado', response.data)
+            localStorage.setItem('_usuario_logado', JSON.stringify(response.data));
             this.props.history.push("/home");
            // this.props.history.push("/home");
        }).catch( erro =>{
-            this.setState({mensagemErro: erro.response.data.message});
+           // this.setState({mensagemErro: erro.response.data.message});
             //console.log("teste")
+            mensagemErro(erro.response.data.message);
        })
 
 

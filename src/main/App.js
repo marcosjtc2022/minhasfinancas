@@ -5,6 +5,8 @@ import 'bootswatch/dist/flatly/bootstrap.css'
 import Navbar from "../components/navbar";
 import Rotas from "./rotas";
 import '../custom.css'
+import 'toastr/build/toastr.css'
+import 'toastr/build/toastr.min.js'
 
 //Componente que inicializa a aplicação.
 

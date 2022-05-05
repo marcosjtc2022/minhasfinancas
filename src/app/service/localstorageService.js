@@ -1,4 +1,4 @@
-export default class LocalStorageService {
+class LocalStorageService {
 
    static adicionarItem(chave,valor){
       localStorage.setItem(chave,JSON.stringify(valor));
@@ -10,3 +10,5 @@ export default class LocalStorageService {
    }
 
 }
+
+export default LocalStorageService
