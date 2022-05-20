@@ -1,1 +1,4 @@
 npm add currency-formatter
+yarn add primereact
+yarn add primeicons classnames
+yarn add react-transition-group

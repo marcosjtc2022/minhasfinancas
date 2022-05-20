@@ -4,9 +4,15 @@ import 'bootswatch/dist/flatly/bootstrap.css'
 //import CadastroUsuario from "../views/cadastroUsuario";
 import Navbar from "../components/navbar";
 import Rotas from "./rotas";
-import '../custom.css'
-import 'toastr/build/toastr.css'
-import 'toastr/build/toastr.min.js'
+import '../custom.css';
+import 'toastr/build/toastr.css';
+import 'toastr/build/toastr.min.js';
+import 'primereact/resources/themes/nova-light/theme.css'
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
+
+
+
 
 //Componente que inicializa a aplicação.
 
