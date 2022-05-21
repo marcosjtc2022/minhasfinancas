@@ -7,9 +7,9 @@ import Rotas from "./rotas";
 import '../custom.css';
 import 'toastr/build/toastr.css';
 import 'toastr/build/toastr.min.js';
-import 'primereact/resources/themes/nova-light/theme.css'
-import 'primereact/resources/primereact.min.css'
-import 'primeicons/primeicons.css'
+//import 'primereact/resources/themes/nova-light/theme.css'
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 
 
