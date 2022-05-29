@@ -17,8 +17,11 @@ function Rotas(){
               <Route path="/login" component={Login} />
               <Route path="/cadastro-usuarios" component={CadastroUsuario} />
               <Route path="/consulta-lancamentos" component={ConsultaLancamentos} />
-              <Route path="/cadastro-lancamentos" component={CadastroLancamentos} />
-
+              //Interrogação no fim determina que o parâmetro é opcional.
+              //Isso evita erro!
+              <Route path="/cadastro-lancamentos/:id?" component={CadastroLancamentos} />
+              
+              
             </Switch>
         </HashRouter>
 

@@ -21,7 +21,9 @@ class CadastroLancamentos extends React.Component{
         mes: '',
         ano: '',
         tipo: '',
-        status: ''
+        status: '',
+        usuario: null,
+        atualizando: false
 
     }
     
@@ -34,7 +36,18 @@ class CadastroLancamentos extends React.Component{
     componentDidMount(){
         //Recebe os parâmetros da url da rota.
         const params = this.props.match.params;
-        console.log('params:', params);
+        const params2 = this.props.params;
+        if (params.id){
+              this.service.obterPorId(params.id)
+              .then(response => {
+                  //(...) Coloca todas as propriedades do response.data dentro de setState
+                  this.setState( {...response.data, atualizando: true} )
+              })
+              .catch(error =>{
+                  messages.mensagemErro(error.response.data.message);
+              })
+        }
+       // console.log('params:', params.props);
     }
 
     submit = () => {
@@ -56,8 +69,34 @@ class CadastroLancamentos extends React.Component{
                 this.props.history.push('/consulta-lancamentos');
                 messages.mensagemSucesso('Lançamento cadastrado com sucesso!'); 
             }).catch(error => {
-                messages.mensagemErro(error.response.data);
+                messages.mensagemErro(error.response.data.message);
             })
+    }
+
+    atualizar = () => {
+
+       
+      
+        //Operador destructor. Vai desestruturar a propriedade (this.state),
+        //em várias propriedades que são filhas do state.
+        //O que se quer extrair.
+        const {descricao,valor,mes,ano,tipo,status, usuario,id} = this.state;
+
+        //Pode colocar a propriedade acima diretamtente abaixo.
+        //Não precisa a repetição descricao: descricao.
+        const lancamento = {descricao,valor,mes,ano,tipo,usuario,status, id};
+
+        this.service
+            .atualizar(lancamento)
+            .then(response => {
+                this.props.history.push('/consulta-lancamentos');
+                messages.mensagemSucesso('Lançamento atualizado com sucesso!'); 
+            }).catch(error => {
+                messages.mensagemErro(error.response.data.message);
+            })
+        
+
+
     }
 
     handleChange = (event) => {
@@ -72,8 +111,9 @@ class CadastroLancamentos extends React.Component{
        const meses = this.service.obterListaMeses();
 
        return(
-
-          <Card title="Cadastro de Lançamento">
+           
+          //Operador ternário (? (if) - se for verdade - : (else))
+          <Card title={this.state.atualizando ? 'Atualização de Lançamento':'Cadastro de Lançamento' }>
               <div className="row">
                 <div className="col-md-12">
                   <FormGroup id="inputDescricao" label="Descrição: *">
@@ -140,7 +180,14 @@ class CadastroLancamentos extends React.Component{
             </div>
             <div className="row">
               <div className="col-md-6">
-                <button onClick={this.submit} className="btn btn-success">Salvar</button>
+                { this.state.atualizando ? 
+                    (
+                        <button onClick={this.atualizar} className="btn btn-success">Atualizar</button>
+                    ) : (
+                        <button onClick={this.submit} className="btn btn-success">Salvar</button>
+                    )
+                }                  
+                
                 <button onClick={e => this.props.history.push('/consulta-lancamentos')} className="btn btn-danger">Cancelar</button>
               </div> 
             </div>
