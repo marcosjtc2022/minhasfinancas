@@ -63,6 +63,16 @@ class CadastroLancamentos extends React.Component{
         //Não precisa a repetição descricao: descricao.
         const lancamento = {descricao,valor,mes,ano,tipo,usuario:usuarioLogado.id};
 
+
+        try{
+            this.service.validar(lancamento);
+        }catch(erro){ //Capturou o array de erro.
+            const mensagens = erro.mensagens;
+            mensagens.forEach(msg => messages.mensagemErro(msg));
+            return false;
+        }
+
+        
         this.service
             .salvar(lancamento)
             .then(response => {
