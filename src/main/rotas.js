@@ -4,12 +4,14 @@ import Home from "../views/home";
 import CadastroUsuario from "../views/cadastroUsuario";
 import ConsultaLancamentos from "../views/lancamentos/consulta-lancamentos";
 import CadastroLancamentos from "../views/lancamentos/cadastro-lancamentos";
+import AuthService from "../app/service/authService";
 
-import { Route,Switch,HashRouter, Redirect} from 'react-router-dom'
+import { Route,Switch,HashRouter, Redirect} from 'react-router-dom';
 
-const isUsuarioAutenticado = () => {
-    return true;
-}
+
+//const isUsuarioAutenticado = () => {
+//    return true;
+//}
 
 //Usando um operado destructor para pegar parte de props.
 //No caso a propriedade component que foi passada abaixo: component={ConsultaLancamentos}.
@@ -21,7 +23,7 @@ function RotaAutenticada({component: Component, ...props}){
     //Espalha a propriedade para uma rota comum.
     //Outra forma de renderizar o componente Router.
      <Route {...props} render={(componentProps) =>{
-       if (isUsuarioAutenticado()){
+       if (AuthService.isUsuarioAutenticado()){
          return (
              <Component {...componentProps} />
          ) 
