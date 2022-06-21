@@ -5,6 +5,7 @@ import CadastroUsuario from "../views/cadastroUsuario";
 import ConsultaLancamentos from "../views/lancamentos/consulta-lancamentos";
 import CadastroLancamentos from "../views/lancamentos/cadastro-lancamentos";
 import AuthService from "../app/service/authService";
+import { AuthConsumer } from "../main/provedorAutenticacao";
 
 import { Route,Switch,HashRouter, Redirect} from 'react-router-dom';
 
@@ -18,7 +19,7 @@ import { Route,Switch,HashRouter, Redirect} from 'react-router-dom';
 //Component é um alias.
 //Todos os componentes começam com letra maiúscula.
 //(...) spread operator coloca todas as props junto com componentProps.
-function RotaAutenticada({component: Component, isUsuarioAutenticado, ...props}){ 
+function RotaAutenticada({component: Component,isUsuarioAutenticado, ...props}){ 
   return (
     //Espalha a propriedade para uma rota comum.
     //Outra forma de renderizar o componente Router.
@@ -39,7 +40,7 @@ function RotaAutenticada({component: Component, isUsuarioAutenticado, ...props})
   )
 }
 
-function Rotas(){
+function Rotas(props){
   //HashRouter = # da url
   //Caso coloque no browser a palavra 'Login'. o react renderiza o componente Login
     return (
@@ -48,11 +49,11 @@ function Rotas(){
               //Path e componente renderizado. 
               <Route path="/login" component={Login} />
               <Route path="/cadastro-usuarios" component={CadastroUsuario} />
-              <RotaAutenticada  path="/home" component={Home} />
-              <RotaAutenticada  path="/consulta-lancamentos" component={ConsultaLancamentos} />
+              <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/home" component={Home} />
+              <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/consulta-lancamentos" component={ConsultaLancamentos} />
               //Interrogação no fim determina que o parâmetro é opcional.
               //Isso evita erro!
-              <RotaAutenticada path="/cadastro-lancamentos/:id?" component={CadastroLancamentos} />
+              <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} path="/cadastro-lancamentos/:id?" component={CadastroLancamentos} />
               
               
             </Switch>
@@ -62,4 +63,11 @@ function Rotas(){
 
 }
 
-export default Rotas
+//Todas as vezes que retorna um componente como função tem que ser aerofunction.
+export default () => (
+   <AuthConsumer>
+     { (context) => (<Rotas isUsuarioAutenticado={context.isAutenticado}/>)
+
+     }
+   </AuthConsumer>
+)
