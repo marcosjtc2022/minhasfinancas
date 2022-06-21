@@ -1,6 +1,7 @@
 import React from "react";
 import UsuarioService from "../app/service/usuarioService";
 import LocalStorageService from "../app/service/localstorageService";
+import { AuthContext} from '../main/provedorAutenticacao';
 //import axios from "axios";
 
 class Home extends React.Component{
@@ -21,7 +22,8 @@ class Home extends React.Component{
     componentDidMount() {
         //Recupera usuário logado da classe login.js.
        // const usuarioLogadoString = localStorage.getItem('_usuario_logado');
-        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
+        //const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
+        const usuarioLogado = this.context.usuarioAutenticado;
 
         //JSON.stringify() transforma uma string em um objeto JSON.
         //const usuarioLogado = JSON.parse(usuarioLogadoString);
@@ -72,5 +74,8 @@ class Home extends React.Component{
     }
 
 }
+
+//Só funciona desta forma para componentes de classe.
+Home.contextType = AuthContext;
 
 export default Home

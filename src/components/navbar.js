@@ -2,6 +2,7 @@ import React from "react";
 import NavbarItem from "./navbaritem";
 import AuthService from "../app/service/authService";
 
+
 const deslogar = () => {
    AuthService.removerUsuarioAutenticado();
 }

@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 import UsuarioService from "../app/service/usuarioService";
 import LocalStorageService from "../app/service/localstorageService";
 import { mensagemErro} from '../components/toastr';
+import { AuthContext} from '../main/provedorAutenticacao';
 
 
 class Login extends React.Component{
@@ -45,7 +46,9 @@ class Login extends React.Component{
        }).then (response => {
             //console.log(response)
             //JSON.stringify() transforma o objeto JSON em uma string.
-            LocalStorageService.adicionarItem('_usuario_logado', response.data)
+            //LocalStorageService.adicionarItem('_usuario_logado', response.data);
+            this.context.iniciarSessao(response.data);
+           // this.componentDidCatch.context.iniciarSessao(response.data);
            //* localStorage.setItem('_usuario_logado', JSON.stringify(response.data));
             this.props.history.push("/home");
            // this.props.history.push("/home");
@@ -112,6 +115,10 @@ class Login extends React.Component{
     
 
 }
+
+//Componente login vai se inscrever no contexto.
+//Desta forma, vai ter acesso às propriedades do ProvedorAutenticacao.
+Login.contextType = AuthContext;
 
 //Decorator - Recebe o componente como parâmetro,
 //e retorna o mesmo componente, com novas funcionalidades.

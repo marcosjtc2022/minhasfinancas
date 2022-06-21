@@ -18,12 +18,12 @@ import { Route,Switch,HashRouter, Redirect} from 'react-router-dom';
 //Component é um alias.
 //Todos os componentes começam com letra maiúscula.
 //(...) spread operator coloca todas as props junto com componentProps.
-function RotaAutenticada({component: Component, ...props}){ 
+function RotaAutenticada({component: Component, isUsuarioAutenticado, ...props}){ 
   return (
     //Espalha a propriedade para uma rota comum.
     //Outra forma de renderizar o componente Router.
      <Route {...props} render={(componentProps) =>{
-       if (AuthService.isUsuarioAutenticado()){
+       if (isUsuarioAutenticado){
          return (
              <Component {...componentProps} />
          ) 
@@ -48,8 +48,8 @@ function Rotas(){
               //Path e componente renderizado. 
               <Route path="/login" component={Login} />
               <Route path="/cadastro-usuarios" component={CadastroUsuario} />
-              <RotaAutenticada path="/home" component={Home} />
-              <RotaAutenticada path="/consulta-lancamentos" component={ConsultaLancamentos} />
+              <RotaAutenticada  path="/home" component={Home} />
+              <RotaAutenticada  path="/consulta-lancamentos" component={ConsultaLancamentos} />
               //Interrogação no fim determina que o parâmetro é opcional.
               //Isso evita erro!
               <RotaAutenticada path="/cadastro-lancamentos/:id?" component={CadastroLancamentos} />
